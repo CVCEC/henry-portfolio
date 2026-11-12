@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Henry Nguyen's Portfolio</title>
+<meta name="description" content="Henry Nguyen, Grade 7 youth civic advocate in Willowdale, Toronto: proposals, meetings with public leaders, reading life and projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a civic dossier. Left-aligned, asymmetric; Canada's levels of government organise the record. */
+:root{
+  --paper:#F2F5F3;      /* cool paper, faint green bias */
+  --card:#FFFFFF;
+  --ink:#13211B;        /* green-black ink */
+  --muted:#56665E;
+  --rule:#D3DCD7;
+  --commons:#1D5A43;    /* House of Commons green */
+  --brass:#9C7120;      /* flag-finial brass, used sparingly */
+  --sky:#DCE9F3;        /* Henry's suit blue, as a quiet fill */
+  --sky-ink:#244E6E;
+  --chip-fed:#1D5A43; --chip-prov:#9C3B2E; --chip-muni:#244E6E; --chip-com:#6A5418; --chip-intl:#5A4A8C;
+  --shadow:0 1px 2px rgba(19,33,27,.06),0 8px 24px rgba(19,33,27,.06);
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Public Sans","Helvetica Neue",Arial,system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --wrap:1120px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0E1512; --card:#151E1A; --ink:#E6EEEA; --muted:#9DAEA6; --rule:#26332D;
+  --commons:#7CCBA6; --brass:#DDB25E; --sky:#1C2E3B; --sky-ink:#A9CBE6;
+  --chip-fed:#7CCBA6; --chip-prov:#EE9A8A; --chip-muni:#A9CBE6; --chip-com:#DDB25E; --chip-intl:#BBAEF0;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E1512; --card:#151E1A; --ink:#E6EEEA; --muted:#9DAEA6; --rule:#26332D;
+  --commons:#7CCBA6; --brass:#DDB25E; --sky:#1C2E3B; --sky-ink:#A9CBE6;
+  --chip-fed:#7CCBA6; --chip-prov:#EE9A8A; --chip-muni:#A9CBE6; --chip-com:#DDB25E; --chip-intl:#BBAEF0;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--commons);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--commons);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.08;letter-spacing:-.02em;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.9rem,1.3rem + 2.2vw,2.9rem);font-weight:800}
+h3{font-size:1.2rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+.eyebrow{color:var(--muted)}
+.lede{font-size:1.12rem;color:var(--muted);max-width:62ch}
+section{padding-block:clamp(56px,8vw,104px)}
+section + section{border-top:1px solid var(--rule)}
+.sec-head{display:grid;gap:14px;margin-bottom:clamp(28px,4vw,44px)}
+
+/* Top bar */
+.top{padding-block:18px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.top .mark{font-family:var(--f-display);font-weight:800;font-size:1.05rem;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.nav{overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;white-space:nowrap}
+.nav a{display:block;padding:6px 10px;border-radius:999px;color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500}
+.nav a:hover{color:var(--ink);background:var(--sky)}
+
+/* Hero */
+.hero{padding-block:clamp(20px,4vw,48px) clamp(56px,8vw,96px);border-top:0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,64px);align-items:end}
+.hero h1{font-size:clamp(3.2rem,1.4rem + 7.5vw,7.4rem);font-weight:800;letter-spacing:-.045em;line-height:.9}
+.hero h1 span{display:block;color:var(--commons)}
+.hero .tagline{font-family:var(--f-display);font-weight:500;font-size:clamp(1.3rem,1rem + 1.3vw,1.85rem);line-height:1.25;letter-spacing:-.01em;max-width:24ch;margin-top:26px}
+.hero .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--muted)}
+.hero .ctas{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;font-weight:600;font-size:.98rem;text-decoration:none;border:1.5px solid var(--commons)}
+.btn.primary{background:var(--commons);color:var(--paper)}
+.btn.ghost{color:var(--commons)}
+.btn:hover{filter:brightness(1.08)}
+.hero figure{margin:0;position:relative}
+.hero figure img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 40%;border-radius:6px}
+.hero figcaption{position:absolute;left:12px;bottom:12px;background:var(--card);color:var(--ink);padding:6px 10px;border-radius:4px;box-shadow:var(--shadow)}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start}
+.about-grid .body{display:grid;gap:18px;font-size:1.08rem;max-width:60ch}
+.about-grid .body p:first-child{font-family:var(--f-display);font-size:clamp(1.35rem,1.1rem + 1vw,1.7rem);line-height:1.3;font-weight:500;letter-spacing:-.01em}
+
+/* Ledger of levels of government */
+.ledger{border-top:2px solid var(--ink)}
+.ledger-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding-block:22px;border-bottom:1px solid var(--rule)}
+.ledger-row h3{display:flex;flex-direction:column;gap:6px}
+.ledger-row h3 .mono{color:var(--muted);font-weight:500}
+.ledger-row ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px}
+.ledger-row li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;align-items:baseline}
+.ledger-row li .yr{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);min-width:5.2em}
+.dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:2px;transform:translateY(-1px)}
+
+/* Proposal */
+.proposal{background:var(--card)}
+.prop-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(28px,5vw,64px);align-items:start}
+.status{justify-self:start;display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:var(--sky);color:var(--sky-ink)}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.timeline li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:20px;padding-block:18px;border-top:1px solid var(--rule)}
+.timeline li:last-child{border-bottom:1px solid var(--rule)}
+.timeline time{font-family:var(--f-mono);font-size:.82rem;color:var(--muted);padding-top:3px}
+.timeline .what{display:grid;gap:8px}
+.chip{justify-self:start;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:3px;border:1px solid currentColor}
+.chip.fed{color:var(--chip-fed)} .chip.prov{color:var(--chip-prov)} .chip.muni{color:var(--chip-muni)} .chip.com{color:var(--chip-com)}
+.dot.fed{background:var(--chip-fed)} .dot.prov{background:var(--chip-prov)} .dot.muni{background:var(--chip-muni)} .dot.com{background:var(--chip-com)} .dot.intl{background:var(--chip-intl)}
+blockquote{margin:4px 0 0;padding:14px 18px;background:var(--paper);border-radius:6px;font-family:var(--f-display);font-size:1.15rem;line-height:1.35;font-weight:500;letter-spacing:-.005em}
+blockquote cite{display:block;margin-top:8px;font-family:var(--f-body);font-style:normal;font-size:.86rem;font-weight:400;color:var(--muted);letter-spacing:0}
+.timeline li.now .what p{font-weight:600}
+.side{display:grid;gap:22px;position:sticky;top:24px}
+.facts{display:grid;gap:0;border-top:2px solid var(--ink)}
+.facts div{display:flex;justify-content:space-between;gap:16px;padding-block:12px;border-bottom:1px solid var(--rule)}
+.facts dt{color:var(--muted)} .facts dd{margin:0;font-weight:600;text-align:right}
+.evidence h3{margin-bottom:12px}
+.ev-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.thumb{all:unset;cursor:zoom-in;display:block;border-radius:6px;overflow:hidden;border:1px solid var(--rule);background:var(--paper)}
+.thumb img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top}
+.thumb span{display:block;padding:8px 10px;font-size:.8rem;color:var(--muted);line-height:1.35}
+.thumb:focus-visible{outline:2px solid var(--commons);outline-offset:2px}
+.note{font-size:.86rem;color:var(--muted)}
+
+/* Leaders */
+.photo-row{display:flex;gap:14px}
+.photo-row .ph{flex:var(--ar) 1 0;aspect-ratio:var(--ar);min-width:0}
+.ph{margin:0;position:relative;border-radius:6px;overflow:hidden;background:var(--card)}
+.ph button{all:unset;cursor:zoom-in;display:block;width:100%;height:100%}
+.ph img{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph figcaption{position:absolute;inset:auto 0 0 0;padding:28px 14px 12px;color:#fff;font-size:.9rem;line-height:1.35;background:linear-gradient(to top,rgba(10,18,14,.82),rgba(10,18,14,0))}
+.qp{margin-top:40px;display:grid;gap:14px}
+.qp-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.about-pic{margin:10px 0 0;max-width:200px}
+.about-pic img{display:block;width:100%;height:auto;border-radius:6px}
+
+/* Recognition */
+.rec{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.rec article{background:var(--card);border:1px solid var(--rule);border-radius:8px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.doc{all:unset;cursor:zoom-in;display:block;width:100%;background:var(--paper);border-bottom:1px solid var(--rule)}
+.doc img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;padding:14px}
+.doc:focus-visible,.pic:focus-visible{outline:2px solid var(--commons);outline-offset:-2px}
+.rec .body{padding:22px;display:grid;gap:12px;align-content:start}
+.rec .mono{color:var(--muted)}
+.ratings{list-style:none;margin:0;padding:0}
+.ratings li{display:flex;justify-content:space-between;gap:12px;padding-block:7px;border-top:1px solid var(--rule);font-size:.92rem}
+.ratings b{font-weight:600;color:var(--commons)}
+
+/* Strengths */
+.str-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(28px,5vw,64px);align-items:start}
+.str-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.str{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:20px;display:grid;gap:12px;align-content:start}
+.str .top-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.str .score{font-family:var(--f-display);font-weight:800;font-size:2.2rem;letter-spacing:-.03em;line-height:1;color:var(--commons);font-variant-numeric:tabular-nums}
+.bar{height:6px;border-radius:3px;background:var(--rule);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--commons);border-radius:3px}
+.str .band{color:var(--muted)}
+.str p{font-size:.95rem}
+.report{background:var(--sky);color:var(--ink);border-radius:8px;padding:22px;display:grid;gap:14px}
+.report h3{color:var(--sky-ink)}
+.report ul{margin:0;padding-left:18px;display:grid;gap:8px}
+.grades{display:flex;flex-wrap:wrap;gap:8px}
+.grades span{background:var(--card);border-radius:999px;padding:4px 12px;font-size:.88rem;font-weight:600}
+
+/* Reading */
+.reading-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:end;margin-bottom:36px}
+.shelf{display:grid;gap:0;border-top:2px solid var(--ink)}
+.shelf div{padding-block:12px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px}
+.shelf .mono{color:var(--muted);padding-top:3px}
+.mosaic{columns:3 260px;column-gap:14px}
+.mosaic figure{break-inside:avoid;margin:0 0 14px;background:var(--card);border-radius:6px;overflow:hidden;border:1px solid var(--rule)}
+.mosaic button{all:unset;cursor:zoom-in;display:block;width:100%}
+.mosaic img{display:block;width:100%;height:auto}
+.mosaic figcaption{padding:10px 12px;font-size:.88rem;color:var(--muted);line-height:1.4}
+
+/* Earlier work + music */
+.work{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.work article{background:var(--card);border:1px solid var(--rule);border-radius:8px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.pic{all:unset;cursor:zoom-in;display:block;width:100%;background:var(--paper);border-bottom:1px solid var(--rule)}
+.pic img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.pic img.fit{object-fit:contain;padding:12px}
+.work .txt{padding:22px;display:grid;gap:10px;align-content:start}
+.work .mono{color:var(--muted)}
+.mosaic figcaption b{display:block;color:var(--ink);font-weight:600}
+.music{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.2fr);gap:14px;align-items:start;margin-top:14px}
+.music video,.music img{display:block;width:100%;border-radius:6px;background:#000;aspect-ratio:9/16;object-fit:cover}
+.music .txt{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;display:grid;gap:10px;align-content:start}
+.music figure{margin:0;display:grid;gap:8px}
+.music figcaption{font-size:.88rem;color:var(--muted)}
+
+/* Contact */
+.contact{background:var(--commons);color:var(--paper)}
+.contact .inner{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(28px,5vw,64px);align-items:end}
+.contact h2{color:var(--paper)}
+.contact p{opacity:.9;max-width:52ch}
+.email-box{display:grid;gap:12px}
+.email-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.email{font-family:var(--f-mono);font-size:clamp(.92rem,.8rem + .5vw,1.08rem);background:var(--paper);color:var(--ink);padding:10px 14px;border-radius:6px;user-select:all;overflow-wrap:anywhere}
+.copy{appearance:none;border:1.5px solid var(--paper);background:transparent;color:var(--paper);border-radius:999px;padding:9px 16px;font:600 .92rem var(--f-body);cursor:pointer}
+.copy:hover{background:rgba(255,255,255,.12)}
+footer{padding-block:28px;color:var(--muted);font-size:.86rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+/* Lightbox */
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(96vw,1100px);max-height:94vh;color:#fff}
+dialog.lb::backdrop{background:rgba(6,10,8,.88)}
+dialog.lb img{display:block;max-width:100%;max-height:84vh;margin:0 auto;border-radius:4px;background:#fff}
+dialog.lb p{margin-top:10px;text-align:center;font-size:.92rem;opacity:.9}
+dialog.lb .x{position:absolute;top:8px;right:8px;appearance:none;border:0;background:rgba(0,0,0,.6);color:#fff;width:40px;height:40px;border-radius:50%;font-size:22px;line-height:1;cursor:pointer}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero-grid,.about-grid,.prop-grid,.str-grid,.reading-top,.contact .inner{grid-template-columns:minmax(0,1fr)}
+  .hero figure{order:-1;max-width:460px}
+  .side{position:static}
+  .ledger-row{grid-template-columns:minmax(0,1fr);gap:12px}
+  .ledger-row ul{grid-template-columns:minmax(0,1fr)}
+  .work{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .music{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .music .txt{grid-column:1 / -1;order:-1}
+}
+@media (max-width:640px){
+  .photo-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .photo-row .ph{aspect-ratio:3/4}
+  .photo-row .ph.wide{grid-column:1 / -1;aspect-ratio:var(--ar)}
+  .rec,.work{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .top{flex-direction:column;align-items:flex-start;gap:8px}
+  .nav{width:100%}
+  .str-list{grid-template-columns:minmax(0,1fr)}
+  .met{grid-template-columns:minmax(0,1fr)}
+  .timeline li{grid-template-columns:minmax(0,1fr);gap:6px}
+  .shelf div{grid-template-columns:minmax(0,1fr);gap:2px}
+  .mosaic{columns:2;column-gap:10px}
+  .mosaic figure{margin-bottom:10px}
+  .mosaic figcaption{font-size:.8rem;padding:8px 10px}
+}
+</style>
+<meta property="og:title" content="Henry Nguyen's Portfolio">
+<meta property="og:description" content="Henry Nguyen, Grade 7 youth civic advocate in Willowdale, Toronto.">
+<meta property="og:image" content="https://henry.cvcec.org/assets/hero-queens-park.jpg">
+<meta property="og:url" content="https://henry.cvcec.org/">
+<meta name="twitter:card" content="summary_large_image">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="wrap top">
+  <a class="mark" href="#top">Henry Nguyen</a>
+  <nav class="nav" aria-label="Sections">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#civic">Civic record</a></li>
+      <li><a href="#proposal">Proposal</a></li>
+      <li><a href="#recognition">Recognition</a></li>
+      <li><a href="#leaders">Leaders</a></li>
+      <li><a href="#strengths">Strengths</a></li>
+      <li><a href="#reading">Reading</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="mono eyebrow">Grade 7 · Bayview Middle School · Willowdale, Toronto</p>
+        <h1 style="margin-top:18px">Henry <span>Nguyen</span></h1>
+        <p class="tagline">Youth civic advocate. I learn how government works by taking part in it.</p>
+        <div class="meta mono">
+          <span>Youth Council · Office of MP Maggie Chi</span>
+          <span>Bayview Ambassador</span>
+        </div>
+        <div class="ctas">
+          <a class="btn primary" href="#proposal">Read about my proposal</a>
+          <a class="btn ghost" href="#contact">Contact me</a>
+        </div>
+      </div>
+      <figure>
+        <img src="assets/hero-queens-park.jpg" alt="Henry in a light blue suit at Queen's Park, between the flags of Canada and Ontario" width="1200" height="1600">
+        <figcaption class="mono">Queen's Park, Toronto</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="sec-head">
+        <p class="mono eyebrow">About me</p>
+        <h2>Every big movement starts with a small idea that someone shares.</h2>
+        <figure class="about-pic"><img src="assets/portrait-armchair.jpg" alt="Henry as a younger boy in a navy suit, sitting in an armchair" width="328" height="364" loading="lazy"></figure>
+      </div>
+      <div class="body">
+        <p>I'm a Vietnamese-Canadian student who loves social studies, politics, science, engineering and art.</p>
+        <p>Since I was little, I have wanted to become a politician and an engineer so I can help people and help my community grow in a sustainable way. To get there, I read every day to understand how decisions are made, and I take every chance I get to talk with the people who make them.</p>
+        <p>I'm also interested in digital creativity and technology, and I hope to study them alongside my main degree one day.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIVIC RECORD -->
+  <section id="civic">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="mono eyebrow">Civic record</p>
+        <h2>Where I've taken part</h2>
+        <p class="lede">Canada has three levels of government. I have reached out at each one. I also volunteer in my community and have met diplomats.</p>
+      </div>
+      <div class="ledger">
+        <div class="ledger-row">
+          <h3><span class="mono"><span class="dot fed"></span> Federal</span>Parliament of Canada</h3>
+          <ul>
+            <li><span class="yr">2025–now</span><span>Youth Council member, Office of Maggie Chi, MP for Don Valley North</span></li>
+            <li><span class="yr">Jul 2026</span><span>Sent my Vietnamese Heritage Day proposal to the MP's office</span></li>
+            <li><span class="yr">2023</span><span>Received a letter from Prime Minister Justin Trudeau after I emailed him about my dream of becoming a politician and my food waste project (<a href="#recognition">see the letter</a>)</span></li>
+            <li><span class="yr">In person</span><span>Met MPs Maggie Chi, Tim Hodgson, Robert Oliphant and Julie Dzerowicz, and the Honourable Ginette Petitpas Taylor</span></li>
+          </ul>
+        </div>
+        <div class="ledger-row">
+          <h3><span class="mono"><span class="dot prov"></span> Provincial</span>Legislative Assembly of Ontario</h3>
+          <ul>
+            <li><span class="yr">Summer</span><span>Took part in the Explore LAO summer program at the Legislative Assembly of Ontario, including a session in the Legislative Chamber</span></li>
+            <li><span class="yr">Visit</span><span>Toured the Ontario Legislative Building and tried on the Speaker's robes</span></li>
+          </ul>
+        </div>
+        <div class="ledger-row">
+          <h3><span class="mono"><span class="dot muni"></span> Municipal</span>City, town and regional bodies</h3>
+          <ul>
+            <li><span class="yr">Aug 2026</span><span>Sent my proposal to Councillor Lily Cheng, Ward 18 Willowdale, who offered to help</span></li>
+            <li><span class="yr">2026</span><span>Signed up as a volunteer in the Ward 18 municipal campaign</span></li>
+            <li><span class="yr">Invited</span><span>Presented my Food Waste Project to the Board of Directors of Eco360, New Brunswick</span></li>
+            <li><span class="yr">Jan 2023</span><span>Received an official city pin from Mayor Andrew LeBlanc of Riverview, New Brunswick</span></li>
+          </ul>
+        </div>
+        <div class="ledger-row">
+          <h3><span class="mono"><span class="dot com"></span> Community</span>School and youth groups</h3>
+          <ul>
+            <li><span class="yr">2026</span><span>Joined <a href="https://www.facebook.com/gghg2402cadets">The Governor General's Horse Guards 2402 Royal Canadian Army Cadet Corps</a></span></li>
+            <li><span class="yr">2025–2026</span><span>Bayview Ambassadors, Bayview Middle School</span></li>
+            <li><span class="yr">Now</span><span>Youth leader, Viet Youth Readiness Hub (Canada Vietnam Cultural &amp; Educational Council)</span></li>
+          </ul>
+        </div>
+        <div class="ledger-row">
+          <h3><span class="mono"><span class="dot intl"></span> International</span>Diplomacy and global projects</h3>
+          <ul>
+            <li><span class="yr">Visit</span><span>Met the team at the Consulate General of Cuba</span></li>
+            <li><span class="yr">2020</span><span>Youngest Student Ambassador, climate and biodiversity project by ACCB, funded by the U.S. Embassy</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="qp">
+        <div class="qp-head"><h3>At Queen's Park</h3><span class="mono eyebrow">Legislative Assembly of Ontario</span></div>
+        <div class="photo-row">
+          <figure class="ph wide" style="--ar:1.44"><button data-full="assets/legislature-mpp-henry.jpg" data-cap="Speaking in the Legislative Chamber during the Explore LAO summer program"><img src="assets/legislature-mpp-henry.jpg" alt="Henry standing at a member's desk and speaking into a microphone in the Ontario Legislative Chamber" loading="lazy"></button><figcaption>Explore LAO summer program: speaking in the Chamber</figcaption></figure>
+          <figure class="ph wide" style="--ar:1.33"><button data-full="assets/legislature-chamber.jpg" data-cap="On the floor of the Ontario Legislative Chamber"><img src="assets/legislature-chamber.jpg" alt="Henry in a grey suit standing on the floor of the Ontario Legislative Chamber" loading="lazy"></button><figcaption>On the floor of the Chamber</figcaption></figure>
+        </div>
+        <div class="photo-row">
+          <figure class="ph wide" style="--ar:1"><button data-full="assets/speakers-chair.jpg" data-cap="Trying on the Speaker's robes"><img src="assets/speakers-chair.jpg" alt="Henry in the Speaker's black robe and tricorne hat, seated in a carved wooden chair" loading="lazy"></button><figcaption>Trying on the Speaker's robes</figcaption></figure>
+          <figure class="ph" style="--ar:.75"><button data-full="assets/queens-park-flags.jpg" data-cap="Inside Queen's Park"><img src="assets/queens-park-flags.jpg" alt="Henry standing beside the flags of Canada and Ontario inside Queen's Park" loading="lazy"></button><figcaption>Inside Queen's Park</figcaption></figure>
+          <figure class="ph" style="--ar:.69"><button data-full="assets/queens-park-steps.jpg" data-cap="Arriving at the Ontario Legislative Building"><img src="assets/queens-park-steps.jpg" alt="Henry walking in front of the Ontario Legislative Building in winter" loading="lazy" style="object-position:20% 50%"></button><figcaption>Arriving in winter</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="qp">
+        <div class="qp-head"><h3>With the Cadets</h3><span class="mono eyebrow">GGHG 2402 Royal Canadian Army Cadet Corps</span></div>
+        <div class="photo-row">
+          <figure class="ph wide" style="--ar:1.33"><button data-full="assets/cadets-group.jpg" data-cap="With The Governor General's Horse Guards 2402 Royal Canadian Army Cadet Corps"><img src="assets/cadets-group.jpg" alt="Large group photo of army cadets and new members, wearing poppies, in a gym under the provincial flags" loading="lazy" style="object-position:50% 70%"></button><figcaption>Joining the cadet corps</figcaption></figure>
+          <figure class="ph wide" style="--ar:1.92"><button data-full="assets/cadets-briefing.jpg" data-cap="Listening to a briefing from cadet instructors"><img src="assets/cadets-briefing.jpg" alt="Cadets and new members sitting on a gym floor, listening to two instructors in uniform" loading="lazy"></button><figcaption>Briefing from the instructors</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPOSAL -->
+  <section id="proposal" class="proposal">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="mono eyebrow">Featured initiative</p>
+        <h2>Vietnamese Heritage Day in Toronto</h2>
+        <p class="lede">My first policy proposal. I researched and wrote it from May to July 2026 with guidance from my mentor, then took it to two levels of government.</p>
+        <span class="status mono">In progress</span>
+      </div>
+
+      <div class="prop-grid">
+        <ol class="timeline">
+          <li>
+            <time datetime="2026-05">May 2026</time>
+            <div class="what">
+              <span class="chip com">Research</span>
+              <p>Started researching and writing the proposal with my mentor.</p>
+            </div>
+          </li>
+          <li>
+            <time datetime="2026-07-31">31 Jul 2026</time>
+            <div class="what">
+              <span class="chip fed">Federal</span>
+              <p>Sent the proposal to the office of Maggie Chi, MP for Don Valley North.</p>
+            </div>
+          </li>
+          <li>
+            <time datetime="2026-08-04">4 Aug 2026</time>
+            <div class="what">
+              <span class="chip fed">Reply</span>
+              <blockquote>"I was impressed by the amount of research and care you've put into it."<cite>Executive Assistant, Office of Maggie Chi, MP</cite></blockquote>
+              <p>The office shared it with the MP and advised me to ask my City Councillor about a City of Toronto proclamation. I wrote back the same day and followed that advice.</p>
+            </div>
+          </li>
+          <li>
+            <time datetime="2026-08-11">11 Aug 2026</time>
+            <div class="what">
+              <span class="chip muni">Municipal</span>
+              <p>Met Councillor Lily Cheng in person. The next day I sent her office the proposal.</p>
+            </div>
+          </li>
+          <li>
+            <time datetime="2026-08-13">13 Aug 2026</time>
+            <div class="what">
+              <span class="chip muni">Reply</span>
+              <blockquote>"Thank you for your initiative! We can certainly help take action on this."<cite>Councillor Lily Cheng, Ward 18 Willowdale</cite></blockquote>
+              <p>Because council does not meet during an election, the next step comes after it. The Councillor asked me to list Vietnamese organizations to contact. I replied within the hour to say I would start right away.</p>
+            </div>
+          </li>
+          <li class="now">
+            <time>Now</time>
+            <div class="what">
+              <span class="chip com">Next step</span>
+              <p>Building the outreach list of Vietnamese community organizations so the proclamation request can move forward in the new council term.</p>
+            </div>
+          </li>
+        </ol>
+
+        <aside class="side">
+          <dl class="facts">
+            <div><dt>Ask</dt><dd>City of Toronto proclamation</dd></div>
+            <div><dt>Levels reached</dt><dd>Federal, Municipal</dd></div>
+            <div><dt>Written replies</dt><dd>2 offices</dd></div>
+            <div><dt>My follow-ups</dt><dd>Same day, both times</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECOGNITION -->
+  <section id="recognition">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="mono eyebrow">Letters and recognition</p>
+        <h2>What others have said</h2>
+      </div>
+      <div class="rec">
+        <article>
+          <button class="doc" data-full="assets/pm-letter.jpg" data-cap="Letter from Prime Minister Justin Trudeau, 2023"><img src="assets/pm-letter.jpg" alt="Letter to Henry on Prime Minister of Canada letterhead" loading="lazy"></button>
+          <div class="body">
+            <span class="mono">2023 · Office of the Prime Minister</span>
+            <h3>A letter from Prime Minister Justin Trudeau</h3>
+            <p>I emailed the Prime Minister about my dream of becoming a politician and about my food waste project, which I had presented to the Mayor of Riverview and to Eco360. He wrote back and commended my commitment to sustainable development and my passion for politics.</p>
+            <blockquote>"Your passion reminds me of just why I decided to do what I do in the first place."<cite>Prime Minister Justin Trudeau</cite></blockquote>
+          </div>
+        </article>
+        <article>
+          <button class="doc" data-full="assets/debate-camp-report.jpg" data-cap="Debate Camp report from program staff"><img src="assets/debate-camp-report.jpg" alt="Debate Camp observation form with checkmarks and a handwritten highlight of the week" loading="lazy"></button>
+          <div class="body">
+            <span class="mono">Debate Camp · Program staff report</span>
+            <h3>Debating and public speaking</h3>
+            <blockquote>"Henry is a strong critical thinker and a great presence in the classroom."<cite>Debate Camp program staff</cite></blockquote>
+            <p>Playing the Prime Minister in a debate on giving parents access to their children's social media, I argued it would help keep kids away from inappropriate content.</p>
+            <ul class="ratings">
+              <li><span>Persuasion and expression</span><b>Consistently</b></li>
+              <li><span>Teamwork and collaboration</span><b>Consistently</b></li>
+              <li><span>Interest and engagement</span><b>Consistently</b></li>
+              <li><span>Confidence and clarity</span><b>Often</b></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERS -->
+  <section id="leaders">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="mono eyebrow">Conversations</p>
+        <h2>Meeting the people who serve</h2>
+        <p class="lede">I take every opportunity to connect with people who work in government. These are some of the public leaders I have met.</p>
+      </div>
+      <div class="mosaic">
+        <figure><button data-full="assets/handshake-maggie-chi.jpg" data-cap="Maggie Chi, MP for Don Valley North"><img src="assets/handshake-maggie-chi.jpg" alt="MP Maggie Chi shaking Henry's hand at a community event" loading="lazy"></button><figcaption><b>Maggie Chi, MP</b>Don Valley North. I serve on her Youth Council.</figcaption></figure>
+        <figure><button data-full="assets/mp-dzerowicz-conversation.jpg" data-cap="Talking with Julie Dzerowicz, MP for Davenport"><img src="assets/mp-dzerowicz-conversation.jpg" alt="Henry smiling as he talks with MP Julie Dzerowicz" loading="lazy"></button><figcaption><b>Julie Dzerowicz, MP</b>Davenport</figcaption></figure>
+        <figure><button data-full="assets/hodgson-chi.jpg" data-cap="With Maggie Chi, MP, and Tim Hodgson, MP"><img src="assets/hodgson-chi.jpg" alt="Henry standing in a group with MP Maggie Chi and MP Tim Hodgson" loading="lazy"></button><figcaption><b>Tim Hodgson, MP, and Maggie Chi, MP</b>Community event</figcaption></figure>
+        <figure><button data-full="assets/oliphant.jpg" data-cap="With Robert Oliphant, MP"><img src="assets/oliphant.jpg" alt="Henry in a light blue suit standing with MP Robert Oliphant in a large hall" loading="lazy"></button><figcaption><b>Robert Oliphant, MP</b>Met in person</figcaption></figure>
+        <figure><button data-full="assets/petitpas-taylor.jpg" data-cap="With the Honourable Ginette Petitpas Taylor, January 2023"><img src="assets/petitpas-taylor.jpg" alt="Selfie of Henry with the Honourable Ginette Petitpas Taylor" loading="lazy"></button><figcaption><b>The Honourable Ginette Petitpas Taylor</b>Lunar New Year Festival, January 2023</figcaption></figure>
+        <figure><button data-full="assets/mayor-leblanc.jpg" data-cap="Mayor Andrew LeBlanc of Riverview, Lunar New Year Festival, January 2023"><img src="assets/mayor-leblanc.jpg" alt="Mayor Andrew LeBlanc leaning down to shake Henry's hand at a Lunar New Year festival" loading="lazy"></button><figcaption><b>Mayor Andrew LeBlanc</b>Riverview, N.B. He gave me an official city pin, January 2023.</figcaption></figure>
+        <figure><button data-full="assets/rouleau.jpg" data-cap="With Lieutenant-General (Ret.) Mike Rouleau"><img src="assets/rouleau.jpg" alt="Selfie of Henry with retired Lieutenant-General Mike Rouleau" loading="lazy"></button><figcaption><b>Lieutenant-General (Ret.) Mike Rouleau</b>Met in person</figcaption></figure>
+        <figure><button data-full="assets/consulate-cuba.jpg" data-cap="At the Consulate General of Cuba"><img src="assets/consulate-cuba.jpg" alt="Henry standing with a consular official beside the flag of Cuba" loading="lazy"></button><figcaption><b>Consulate General of Cuba</b>Visit with the consular team</figcaption></figure>
+        <figure><button data-full="assets/dzerowicz-group.jpg" data-cap="With MP Julie Dzerowicz at a community event"><img src="assets/dzerowicz-group.jpg" alt="Henry and his family in a group photo with MP Julie Dzerowicz" loading="lazy"></button><figcaption><b>Julie Dzerowicz, MP</b>Community event, with my family</figcaption></figure>
+        <figure><button data-full="assets/meeting-presentation.jpg" data-cap="Presenting my Food Waste Project to the Board of Directors of Eco360"><img src="assets/meeting-presentation.jpg" alt="Henry at a meeting table with his laptop open, talking with two adults" loading="lazy"></button><figcaption><b>Board of Directors, Eco360</b>They invited me to present my Food Waste Project, New Brunswick</figcaption></figure>
+        <figure><button data-full="assets/event-table.jpg" data-cap="Community dinner in Don Valley North"><img src="assets/event-table.jpg" alt="Henry seated at a dinner table with a small Canadian flag" loading="lazy"></button><figcaption><b>Community dinner</b>Don Valley North</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRENGTHS -->
+  <section id="strengths">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="mono eyebrow">How I think</p>
+        <h2>My strongest thinking skills</h2>
+        <p class="lede">A cognitive assessment I took in April 2026 showed four strong areas. Here is how each one shows up in my work.</p>
+      </div>
+      <div class="str-grid">
+        <div class="str-list">
+          <article class="str">
+            <div class="top-row"><h3>Pattern recognition</h3><span class="score">92</span></div>
+            <div class="bar" aria-hidden="true"><i style="width:92%"></i></div>
+            <span class="band mono">Very superior</span>
+            <p>I connect what I read with policy ideas and real events. My teachers notice this in class discussions.</p>
+          </article>
+          <article class="str">
+            <div class="top-row"><h3>Attention to detail</h3><span class="score">90</span></div>
+            <div class="bar" aria-hidden="true"><i style="width:90%"></i></div>
+            <span class="band mono">Very superior</span>
+            <p>I write formal letters to elected offices with care, and I follow up on every reply the same day.</p>
+          </article>
+          <article class="str">
+            <div class="top-row"><h3>Logical reasoning</h3><span class="score">88</span></div>
+            <div class="bar" aria-hidden="true"><i style="width:88%"></i></div>
+            <span class="band mono">Superior</span>
+            <p>When the MP's office suggested a City proclamation, I adjusted my plan and took the proposal to my Councillor.</p>
+          </article>
+          <article class="str">
+            <div class="top-row"><h3>Spatial reasoning</h3><span class="score">88</span></div>
+            <div class="bar" aria-hidden="true"><i style="width:88%"></i></div>
+            <span class="band mono">Superior</span>
+            <p>I designed an interactive game that models Riverview landmarks, and I reached the A range in Design &amp; Technology.</p>
+          </article>
+        </div>
+        <aside class="report">
+          <p class="mono" style="color:var(--sky-ink)">From my school report</p>
+          <h3>Initiative: Excellent</h3>
+          <ul>
+            <li>Teachers recognize the deep, engaging questions I ask in class.</li>
+            <li>I raise critical-thinking questions that help class discussions go further.</li>
+            <li>I make connections between literature, policy ideas and real-world issues.</li>
+          </ul>
+          <p class="mono" style="color:var(--sky-ink)">A-range mastery</p>
+          <div class="grades"><span>Science</span><span>Design &amp; Technology</span><span>Visual Arts</span></div>
+        </aside>
+      </div>
+      <p class="note" style="margin-top:22px;max-width:70ch">Domain scores as reported by an online assessment from IQ Academy, April 2026. An online test gives an indication of strengths. It is not a clinical evaluation.</p>
+    </div>
+  </section>
+
+  <!-- READING -->
+  <section id="reading">
+    <div class="wrap">
+      <div class="reading-top">
+        <div class="sec-head" style="margin-bottom:0">
+          <p class="mono eyebrow">Reading life</p>
+          <h2>I read everywhere, even up a tree</h2>
+          <p class="lede">I really love reading and writing, and I see them as learning opportunities. I read every day to understand politics better: on the subway, at the library, at home and outside my school.</p>
+        </div>
+        <div class="shelf">
+          <div><span class="mono">Reading now</span><span><b>Canadian Politics</b>, Concise Second Edition, borrowed from Toronto Public Library</span></div>
+          <div><span class="mono">My notes</span><span>Chapter on <b>The Executive</b>, written by hand on my e-reader</span></div>
+          <div><span class="mono">Online course</span><span><b>Understanding Open Educational Resources</b>, Commonwealth of Learning</span></div>
+        </div>
+      </div>
+      <div class="mosaic">
+        <figure><button data-full="assets/library-study.jpg" data-cap="Studying at Toronto Public Library"><img src="assets/library-study.jpg" alt="Henry writing notes in a study room at Toronto Public Library" loading="lazy"></button><figcaption>Study room at Toronto Public Library</figcaption></figure>
+        <figure><button data-full="assets/notes-the-executive.jpg" data-cap="Taking notes on 'The Executive'"><img src="assets/notes-the-executive.jpg" alt="Henry writing notes about the executive branch on an e-reader, with a politics textbook on his lap" loading="lazy"></button><figcaption>Notes on "The Executive"</figcaption></figure>
+        <figure><button data-full="assets/reading-tree.jpg" data-cap="Reading up a tree, with my little brother climbing up"><img src="assets/reading-tree.jpg" alt="Henry reading a book while sitting in a tree, his younger brother climbing below" loading="lazy"></button><figcaption>Up a tree, with my little brother on the way up</figcaption></figure>
+        <figure><button data-full="assets/canadian-politics-book.jpg" data-cap="Canadian Politics, borrowed from Toronto Public Library"><img src="assets/canadian-politics-book.jpg" alt="Library copy of Canadian Politics, Concise Second Edition, on top of an e-reader" loading="lazy"></button><figcaption>Borrowed from Toronto Public Library</figcaption></figure>
+        <figure><button data-full="assets/reading-subway.jpg" data-cap="Reading on the TTC subway"><img src="assets/reading-subway.jpg" alt="Henry reading a thick book on the subway" loading="lazy"></button><figcaption>On the subway</figcaption></figure>
+        <figure><button data-full="assets/online-course-oer.jpg" data-cap="Taking a Commonwealth of Learning online course"><img src="assets/online-course-oer.jpg" alt="Henry taking notes while watching an online course video" loading="lazy"></button><figcaption>Taking notes in an online course</figcaption></figure>
+        <figure><button data-full="assets/reading-schoolyard.jpg" data-cap="Reading outside after school"><img src="assets/reading-schoolyard.jpg" alt="Henry lying on a stone ledge, holding a book up to read" loading="lazy"></button><figcaption>After school, on a stone ledge</figcaption></figure>
+        <figure><button data-full="assets/thinking.jpg" data-cap="Thinking it through"><img src="assets/thinking.jpg" alt="Henry resting his chin on his hand while reading a book on the sofa" loading="lazy"></button><figcaption>Thinking it through</figcaption></figure>
+        <figure><button data-full="assets/reading-sofa.jpg" data-cap="Reading at home"><img src="assets/reading-sofa.jpg" alt="Henry reading with headphones on at home" loading="lazy"></button><figcaption>At home, headphones on</figcaption></figure>
+        <figure><button data-full="assets/writing-desk.jpg" data-cap="Writing at my desk"><img src="assets/writing-desk.jpg" alt="Henry writing with a pencil at his desk" loading="lazy"></button><figcaption>Writing at my desk</figcaption></figure>
+        <figure><button data-full="assets/reading-bed.jpg" data-cap="One more chapter before bed"><img src="assets/reading-bed.jpg" alt="Henry lying on his bed, reading a paperback standing open in front of him" loading="lazy"></button><figcaption>One more chapter before bed</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- EARLIER WORK -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="mono eyebrow">Earlier projects</p>
+        <h2>I started young</h2>
+      </div>
+      <div class="work">
+        <article>
+          <button class="pic" data-full="assets/accb-ceremony.jpg" data-cap="Closing ceremony of Learn – Think – Act for Climate Change and Biodiversity"><img src="assets/accb-ceremony.jpg" alt="Student ambassadors in green shirts holding certificates at the project's closing ceremony" loading="lazy"></button>
+          <div class="txt">
+            <span class="mono">2020 · Climate</span>
+            <h3>Youngest Student Ambassador</h3>
+            <p>"Learn – Think – Act for Climate Change and Biodiversity" was an ACCB project funded by the U.S. Embassy. I made awareness videos, reviewed two books about animals for ACCB's youth Knowledge Hub, and was recognized at the closing ceremony.</p>
+          </div>
+        </article>
+        <article>
+          <button class="pic" data-full="assets/accb-forest-festival.jpg" data-cap="Forest Ecology Festival 2020"><img src="assets/accb-forest-festival.jpg" alt="Young Henry holding a certificate of completion in front of a Forest Ecology Festival 2020 banner" loading="lazy" style="object-position:50% 62%"></button>
+          <div class="txt">
+            <span class="mono">2020 · Ecology</span>
+            <h3>Forest Ecology Festival</h3>
+            <p>I completed the Forest Ecology Festival 2020, run by the British Ecological Society and ACCB, and received a certificate of completion.</p>
+          </div>
+        </article>
+        <article>
+          <button class="pic" data-full="assets/macmillan-change-maker.jpg" data-cap="Change Maker certificate from Macmillan Education"><img class="fit" src="assets/macmillan-change-maker.jpg" alt="Macmillan Education Change Maker certificate awarded to Henry Nguyen for Actions for Climate Change" loading="lazy"></button>
+          <div class="txt">
+            <span class="mono">2023 · Environment</span>
+            <h3>My Food Waste Project</h3>
+            <p>After meeting Mayor LeBlanc, I built an interactive game that models Riverview landmarks to teach young people about food waste, composting and caring for the climate. The Board of Directors of Eco360 invited me to present it, and Macmillan Education named me a "Change Maker".</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="music">
+        <div class="txt">
+          <span class="mono" style="color:var(--muted)">Off the page</span>
+          <h3>Music</h3>
+          <p>Outside of politics and books, I play piano and trombone.</p>
+        </div>
+        <figure>
+          <video controls playsinline preload="none" poster="assets/piano-poster.jpg" aria-label="Henry playing piano">
+            <source src="assets/piano.mp4" type="video/mp4">
+          </video>
+          <figcaption>Piano, December 2025</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/trombone.jpg" alt="Henry playing trombone in front of a piano" loading="lazy">
+          <figcaption>Trombone practice</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap inner">
+      <div class="sec-head" style="margin-bottom:0">
+        <p class="mono" style="opacity:.8">Contact</p>
+        <h2>Thank you for visiting. I'd love to hear from you.</h2>
+        <p>I'm based in Willowdale, Toronto. Messages to this address are read together with a parent.</p>
+      </div>
+      <div class="email-box">
+        <div class="email-row">
+          <span class="email" id="email">henry.baonguyen2804@gmail.com</span>
+          <button class="copy" id="copy" type="button">Copy email</button>
+        </div>
+        <p class="mono" id="copied" aria-live="polite" style="opacity:.85;min-height:1.2em"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Henry Nguyen</span>
+    <span>Born to create, driven to impact.</span>
+  </div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="Enlarged image">
+  <button class="x" id="lbx" type="button" aria-label="Close">×</button>
+  <img id="lbimg" alt="">
+  <p id="lbcap"></p>
+</dialog>
+
+<script>
+(function(){
+  var lb=document.getElementById('lb'), img=document.getElementById('lbimg'), cap=document.getElementById('lbcap');
+  document.querySelectorAll('[data-full]').forEach(function(el){
+    el.addEventListener('click',function(){
+      img.src=el.getAttribute('data-full');
+      var c=el.getAttribute('data-cap')||''; cap.textContent=c; img.alt=c;
+      if(lb.showModal){lb.showModal();}else{window.open(img.src,'_blank');}
+    });
+  });
+  document.getElementById('lbx').addEventListener('click',function(){lb.close();});
+  lb.addEventListener('click',function(e){ if(e.target===lb) lb.close(); });
+
+  var btn=document.getElementById('copy'), msg=document.getElementById('copied'), email=document.getElementById('email');
+  btn.addEventListener('click',function(){
+    var t=email.textContent.trim();
+    function sel(){var r=document.createRange(); r.selectNodeContents(email); var s=getSelection(); s.removeAllRanges(); s.addRange(r); msg.textContent='Selected. Press copy on your device.';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(function(){msg.textContent='Email copied.';},sel);
+    } else sel();
+  });
+})();
+</script>
+</body>
+</html>
